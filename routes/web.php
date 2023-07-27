@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+# GET /home
+Route::get(
+    '/home',
+    [HomeController::class, 'getHome']
+)->name('home');
+
+# GET /sqli
+Route::get(
+    '/sqli',
+    [HomeController::class, 'getSqli']
+)->name('sqli');
+
+# POST /sqli
+Route::post(
+    '/sqli',
+    [HomeController::class, 'postSqli']
+)->name('post_sqli');
