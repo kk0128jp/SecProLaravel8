@@ -16,20 +16,20 @@ class RemediedSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('Remedied')->insert([
-            'user_name' => 'good-taro',
+        DB::table('remedieds')->insert([
+            'user_name' => 'goodtaro',
             'email' => 'taro@taro.com',
             'password' => Hash::make('taro'),
         ]);
 
-        DB::table('Remedied')->insert([
-            'user_name' => 'good-hanako',
+        DB::table('remedieds')->insert([
+            'user_name' => 'goodhanako',
             'email' => 'hanako@hanako.com',
             'password' => Hash::make('hanako'),
         ]);
 
-        DB::table('Remedied')->insert([
-            'user_name' => 'good-hoge',
+        DB::table('remedieds')->insert([
+            'user_name' => 'goodhoge',
             'email' => 'hoge@hoge.com',
             'password' => Hash::make('hoge'),
         ]);

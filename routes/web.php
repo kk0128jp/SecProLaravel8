@@ -18,19 +18,9 @@ Route::get('/', function () {
 });
 
 # GET /home
-Route::get(
-    '/home',
-    [HomeController::class, 'getHome']
-)->name('home');
+Route::get('/home', [HomeController::class, 'getHome'])->name('home');
 
 # GET /sqli
-Route::get(
-    '/sqli',
-    [HomeController::class, 'getSqli']
-)->name('sqli');
-
+Route::get('/sqli', [HomeController::class, 'getSqli'])->name('sqli');
 # POST /sqli
-Route::post(
-    '/sqli',
-    [HomeController::class, 'postSqli']
-)->name('post_sqli');
+Route::post('/sqli', [HomeController::class, 'postSqli'])->name('post_sqli');

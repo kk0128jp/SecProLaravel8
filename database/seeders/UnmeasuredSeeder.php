@@ -16,19 +16,19 @@ class UnmeasuredSeeder extends Seeder
     public function run()
     {
         DB::table('unmeasured')->insert([
-            'user_name' => 'bad-taro',
+            'user_name' => 'badtaro',
             'email' => 'taro@taro.com',
             'password' => 'taro',
         ]);
 
         DB::table('unmeasured')->insert([
-            'user_name' => 'bad-hanako',
+            'user_name' => 'badhanako',
             'email' => 'hanako@hanako.com',
             'password' => 'hanako',
         ]);
 
         DB::table('unmeasured')->insert([
-            'user_name' => 'bad-hoge',
+            'user_name' => 'badhoge',
             'email' => 'hoge@hoge.com',
             'password' => 'hoge',
         ]);

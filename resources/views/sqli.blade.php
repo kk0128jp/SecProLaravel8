@@ -8,32 +8,39 @@
 <body>
     <h1>SQLインジェクション 危険度<span style="color: red;">高</span></h1>
     <p>被害想定：情報漏洩、改ざん、妨害</p>
-    <h2>未対策</h2>
-    <p>itemテーブルからアイテムを検索できます</p>
+    <p>ユーザー名: badtaro　パスワード: taro</p>
+    <p>ユーザー名: goodhanako　パスワード: hanako</p>
+    <p>SQLインジェクション例: ' or 1 = 1 or ';</p>
+    <h2>悪い例</h2>
+    <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
-        <input type="text" name="text">
-        <input type="hidden" value="Unmeasured" name="measures">
-        <input type="submit" value="検索">
+        <p>ユーザー名</p>
+        <input type="text" name="name">
+        <p>パスワード</p>
+        <input type="password" name="passwd">
+        <input type="hidden" value="unmeasured" name="measures">
+        <input type="submit" value="ログイン">
     </form>
     @isset ( $measures )
-        @if ( $measures === 'Unmeasured' )
-            {{ $measures }}
-            {{ $text }}
+        @if ( $measures === 'unmeasured' )
+            {{ $result }}
         @endif
     @endisset
-    <h2>対策済み</h2>
-    <p>itemテーブルからアイテムを検索できます</p>
+    <h2>良い例</h2>
+    <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
-        <input type="text" name="text">
-        <input type="hidden" value="Remedied" name="measures">
-        <input type="submit" value="検索">
+        <p>ユーザー名</p>
+        <input type="text" name="name">
+        <p>パスワード</p>
+        <input type="password" name="passwd">
+        <input type="hidden" value="remedied" name="measures">
+        <input type="submit" value="ログイン">
     </form>
     @isset ( $measures )
-        @if ( $measures === 'Remedied' )
-            {{ $measures }}
-            {{ $text }}
+        @if ( $measures === 'remedied' )
+            {{ $result }}
         @endif
     @endisset
     <p><a href="{{ route('home') }}">ホームへ</a></p>
