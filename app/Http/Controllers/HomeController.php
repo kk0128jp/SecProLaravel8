@@ -80,4 +80,15 @@ class HomeController extends Controller
         $param = ['command' => $command, 'result' => $utf8];
         return view('os_com_i', $param);
     }
+
+    # GET /path-i
+    public function getPathI()
+    {
+        return view('path_i');
+    }
+    # POST /path-i
+    public function postPathI(Request $request)
+    {
+        return view('path_i');
+    }
 }
