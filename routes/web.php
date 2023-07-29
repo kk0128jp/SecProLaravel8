@@ -24,3 +24,8 @@ Route::get('/home', [HomeController::class, 'getHome'])->name('home');
 Route::get('/sqli', [HomeController::class, 'getSqli'])->name('sqli');
 # POST /sqli
 Route::post('/sqli', [HomeController::class, 'postSqli'])->name('post_sqli');
+
+# GET /os-com-i
+Route::get('/os-com-i', [HomeController::class, 'getOsComI'])->name('get_os_com_i');
+# POST /os-com-i
+Route::post('/os-com-i', [HomeController::class, 'postOsComI'])->name('post_os_com_i');

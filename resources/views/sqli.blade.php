@@ -6,8 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>SQLインジェクション 危険度<span style="color: red;">高</span></h1>
-    <p>被害想定：情報漏洩、改ざん、妨害</p>
+    <h1>SQLインジェクション 危険度:<span style="color: red;">高</span></h1>
+    <p>被害想定</p>
+    <ul>
+        <li>情報漏洩、改ざん、妨害</li>
+    </ul>
     <p>ユーザー名: badtaro　パスワード: taro</p>
     <p>ユーザー名: goodhanako　パスワード: hanako</p>
     <p>SQLインジェクション例: ' or 1 = 1 or ';</p>

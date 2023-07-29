@@ -20,7 +20,6 @@ class HomeController extends Controller
     {
         return view('sqli');
     }
-
     # POST /sqli
     public function postSqli(Request $request)
     {
@@ -41,11 +40,13 @@ class HomeController extends Controller
             # バインド
             try {
                 $hash_pass = Remedied::select('password')->where('user_name', $name)->get();
+                #dd(Hash::needsRehash($hash_pass));
                 if(Hash::needsRehash($hash_pass)) {
                     $new_hash_pass = Hash::make($passwd);
+                    #dd(Hash::needsRehash($new_hash_pass));
                     Remedied::where('user_name', $name)->update(['password' => $new_hash_pass]);
                 }
-                if (Hash::check($passwd, $new_hash_pass)) {
+                if (Hash::check('taro', $new_hash_pass)) {
                     $result = 'ログイン成功!';
                 } else {
                     $result = 'ログイン失敗!';
@@ -59,5 +60,24 @@ class HomeController extends Controller
         }
         $param = ['measures' => $measures, 'result' => $result];
         return view('sqli', $param);
+    }
+
+    # GET /os-com-i
+    public function getOsComI()
+    {
+        return view('os_com_i');
+    }
+    # POST /os-com-i
+    public function postOsComI(Request $request)
+    {
+        $command = $request->get('command');
+        try {
+            $result = shell_exec($command);
+            $utf8 = iconv('Shift_JIS', 'UTF-8', $result);
+        } catch (\Exceptin $e) {
+            $result = 'エラー!';
+        }
+        $param = ['command' => $command, 'result' => $utf8];
+        return view('os_com_i', $param);
     }
 }
