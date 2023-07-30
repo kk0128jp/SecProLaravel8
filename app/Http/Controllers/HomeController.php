@@ -89,6 +89,18 @@ class HomeController extends Controller
     # POST /path-i
     public function postPathI(Request $request)
     {
+        $mode = $request->get('measures');
+        if ($mode === 'unmeasured') {
+            $path = $request->get('path');
+        } elseif ($mode === 'remedied') {
+            $path = basename($request->get('path'));
+        }
+        try {
+            include($path);
+        } catch (\Exception $e) {
+            $e_msg = '取得できませんでした';
+            return view('path_i', ['e_msg' => $e_msg]);
+        }
         return view('path_i');
     }
 }

@@ -33,4 +33,4 @@ Route::post('/os-com-i', [HomeController::class, 'postOsComI'])->name('post_os_c
 # GET /path-i
 Route::get('/path-i', [HomeController::class, 'getPathI'])->name('get_path_i');
 # POST /path_i
-Route::post('/path_i', [HomeController::class, 'postPathI'])->name('post_path_i');
+Route::post('/path-i', [HomeController::class, 'postPathI'])->name('post_path_i');
