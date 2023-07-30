@@ -11,15 +11,31 @@
     <ul>
         <li></li>
     </ul>
-    <p>クロスサイト・スクリプティング例: </p>
+    <p>クロスサイト・スクリプティング例: {{ $example }}</p>
     <h2>悪い例</h2>
-    <p>スクリプトを実行してみてね</p>
+    <p>テキストを投稿してね</p>
     <form action="{{ route('post_xss') }}" method="post">
         @csrf
-        <input type="text" name="script">
-        <input type="submit" value="実行">
+        <input type="text" name="text">
+        <input type="hidden" name="measures" value="unmeasured">
+        <input type="submit" value="投稿">
     </form>
+    <p>投稿文</p>
+    @isset ( $result_unm )
+        {!! $result_unm !!}
+    @endisset
     <h2>良い例</h2>
+    <p>テキストを投稿してね</p>
+    <form action="{{ route('post_xss') }}" method="post">
+        @csrf
+        <input type="text" name="text">
+        <input type="hidden" name="measures" value="remedied">
+        <input type="submit" value="投稿">
+    </form>
+    <p>投稿文</p>
+    @isset ( $result_rem )
+        {{ $result_rem }}
+    @endisset
     <p><a href="{{ route('home') }}">ホームへ</a></p>
 </body>
 </html>
