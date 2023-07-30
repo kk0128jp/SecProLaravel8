@@ -103,4 +103,13 @@ class HomeController extends Controller
         }
         return view('path_i');
     }
+
+    # GET /xss
+    public function getXss() {
+        return view('xss');
+    }
+    # POST /xss
+    public function postXss(Request $request) {
+        return view('xss');
+    }
 }
