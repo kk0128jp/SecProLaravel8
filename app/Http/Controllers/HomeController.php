@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Remedied;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Remedied;
+use App\Models\Csrfuser;
 
 class HomeController extends Controller
 {
@@ -39,14 +40,11 @@ class HomeController extends Controller
         } elseif ($measures === 'remedied') {
             # バインド
             try {
-                $hash_pass = Remedied::select('password')->where('user_name', $name)->get();
-                #dd(Hash::needsRehash($hash_pass));
-                if(Hash::needsRehash($hash_pass)) {
-                    $new_hash_pass = Hash::make($passwd);
-                    #dd(Hash::needsRehash($new_hash_pass));
-                    Remedied::where('user_name', $name)->update(['password' => $new_hash_pass]);
+                $obj = Remedied::select('password')->where('user_name', $name)->get();
+                foreach ($obj as $data) {
+                    $hash_pass = $data->password;
                 }
-                if (Hash::check('taro', $new_hash_pass)) {
+                if (Hash::check($passwd, $hash_pass)) {
                     $result = 'ログイン成功!';
                 } else {
                     $result = 'ログイン失敗!';
@@ -121,5 +119,45 @@ class HomeController extends Controller
             $param = ['example' => $example, 'result_rem' => $result];
             return view('xss', $param);
         }
+    }
+
+    # GET /csrf/unmeasured/login
+    public function getCsrfLogin() {
+        return view('csrf_login');
+    }
+    # POST /csrf/unmeasured/login
+    public function postCsrfLogin(Request $request) {
+        $mode = $request->get('measures');
+        $name = $request->get('name');
+        $pass = $request->get('password');
+        $obj = Csrfuser::select('password', 'email')->where('name', $name)->get();
+        foreach ($obj as $data) {
+            $hash_pass = $data->password;
+            $email = $data->email;
+        }
+        if (Hash::check($pass, $hash_pass)) {
+            if ($mode === 'unmeasured') {
+                $request->session()->put('id', '1');
+                $param = ['name' => $name, 'email' => $email];
+                return view('csrf_user_page', $param);
+            }
+        } else {
+            return view('csrf_login');
+        }
+    }
+    # GET /csrf/unmeasured/edit
+    public function getCsrfEdit(Request $request) {
+        $user_id = $request->session()->get('id');
+        $obj = Csrfuser::select('name', 'email')->where('id', $user_id)->get();
+        foreach ($obj as $data) {
+            $name = $data->name;
+            $email = $data->email;
+        }
+        $param = ['name' => $name, 'email' => $email];
+        return view('csrf_edit', $param);
+    }
+    # GET /csrf/unmeasured/fake
+    public function getCsrfFake() {
+        return view('csrf_fake');
     }
 }

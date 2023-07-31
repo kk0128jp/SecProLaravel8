@@ -9,7 +9,8 @@
     <h1>クロスサイト・スクリプティング(XSS) 危険度:<span style="color: yellow;">中</span></h1>
     <p>被害想定</p>
     <ul>
-        <li></li>
+        <li>ウェブページの改ざん</li>
+        <li>Cookieの漏洩</li>
     </ul>
     <p>クロスサイト・スクリプティング例: {{ $example }}</p>
     <h2>悪い例</h2>

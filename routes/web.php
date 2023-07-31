@@ -39,3 +39,12 @@ Route::post('/path-i', [HomeController::class, 'postPathI'])->name('post_path_i'
 Route::get('/xss', [HomeController::class, 'getXss'])->name('get_xss');
 # POST /xss
 Route::post('/xss', [HomeController::class, 'postXss'])->name('post_xss');
+
+# GET /csrf/unmeasured/login
+Route::get('/csrf/unmeasured/login', [HomeController::class, 'getCsrfLogin'])->name('get_csrf_login');
+# POST /csrf/unmeasured/login
+Route::post('/csrf/unmeasured/login', [HomeController::class, 'postCsrfLogin'])->name('post_csrf_login');
+# GET /csrf/unmeasured/edit
+Route::get('/csrf/unmeasured/edit', [HomeController::class, 'getCsrfEdit'])->name('get_csrf_edit');
+# GET /csrf/unmeasured/fake
+Route::get('/csrf/unmeasured/fake', [HomeController::class, 'getCsrfFake'])->name('get_csrf_fake');

@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(ItemSeeder::class);
         $this->call(RemediedSeeder::class);
         $this->call(UnmeasuredSeeder::class);
+        $this->call(CsrfuserSeeder::class);
     }
 }
