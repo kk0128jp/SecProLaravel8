@@ -13,12 +13,12 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 # GET /home
-Route::get('/home', [HomeController::class, 'getHome'])->name('home');
+Route::get('/', [HomeController::class, 'getHome'])->name('home');
 
 # GET /sqli
 Route::get('/sqli', [HomeController::class, 'getSqli'])->name('sqli');
@@ -46,5 +46,16 @@ Route::get('/csrf/unmeasured/login', [HomeController::class, 'getCsrfLogin'])->n
 Route::post('/csrf/unmeasured/login', [HomeController::class, 'postCsrfLogin'])->name('post_csrf_login');
 # GET /csrf/unmeasured/edit
 Route::get('/csrf/unmeasured/edit', [HomeController::class, 'getCsrfEdit'])->name('get_csrf_edit');
+# POST /csrf/unmeasured/edit
+Route::post('/csrf/unmeasured/edit', [HomeController::class, 'postCsrfEdit'])->name('post_csrf_edit');
 # GET /csrf/unmeasured/fake
 Route::get('/csrf/unmeasured/fake', [HomeController::class, 'getCsrfFake'])->name('get_csrf_fake');
+
+# POST /csrf/remedied/login
+Route::post('/csrf/remedied/login', [HomeController::class, 'postCsrfRemLogin'])->name('post_csrf_rem_login');
+# GET /csrf/remedied/edit
+Route::get('/csrf/remedied/login', [HomeController::class, 'getCsrfRemEdit'])->name('get_csrf_rem_edit');
+# POST /csrfremedied/edit
+Route::post('/csrf/remedied/edit', [HomeController::class, 'postCsrfRemEdit'])->name('post_csrf_rem_edit');
+# GET /csrf/remedied/edit
+Route::get('/csrf/remedied/fake', [HomeController::class, 'getCsrfRemFake'])->name('get_csrf_rem_fake');

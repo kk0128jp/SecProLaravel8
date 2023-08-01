@@ -11,8 +11,8 @@
     {{ $name }}
     <p>メールアドレス</p>
     {{ $email }}
-    <button><a href="{{ route('get_csrf_edit') }}">編集</a></button>
-    <button><a href="{{ route('get_csrf_fake') }}">罠サイト</a></button>
+    <button><a href="{{ route('get_csrf_rem_edit') }}">編集</a></button>
+    <button><a href="{{ route('get_csrf_rem_fake') }}">罠サイト</a></button>
     @isset( $msg )
         {{ $msg }}
     @endisset

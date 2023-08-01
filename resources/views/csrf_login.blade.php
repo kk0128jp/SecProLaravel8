@@ -12,17 +12,26 @@
         <li></li>
     </ul>
     <h2>悪い例</h2>
-    <p>ログインしてね</p>
+    <p>ログインしてください</p>
     <form action="{{ route('post_csrf_login') }}" method="post">
-        <p>ユーザー名</p>
+        <p>ユーザー名: taro</p>
         <input type="text" name="name">
-        <p>パスワード</p>
+        <p>パスワード: taro</p>
         <input type="hidden" name="measures" value="unmeasured">
-        <input type="text" name="password">
+        <input type="password" name="password">
         <input type="submit" value="ログイン">
-    </from>
+    </form>
     <h2>良い例</h2>
     <p>ログインしてください</p>
+    <form action="{{ route('post_csrf_rem_login') }}" method="post">
+        @csrf
+        <p>ユーザー名: hanako</p>
+        <input type="text" name="name">
+        <p>パスワード: hanako</p>
+        <input type="password" name="password">
+        <input type="hidden" name="measures" value="remedied">
+        <input type="submit" name="ログイン">
+    </form>
     <p><a href="{{ route('home') }}">ホームへ</a></p>
 </body>
 </html>

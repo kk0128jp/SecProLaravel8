@@ -21,5 +21,10 @@ class CsrfuserSeeder extends Seeder
             'email' => 'taro@example.com',
             'password' => Hash::make('taro'),
         ]);
+        DB::table('csrfuser')->insert([
+            'name' => 'hanako',
+            'email' => 'hanako@example.com',
+            'password' => Hash::make('hanako'),
+        ]);
     }
 }

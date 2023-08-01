@@ -156,8 +156,73 @@ class HomeController extends Controller
         $param = ['name' => $name, 'email' => $email];
         return view('csrf_edit', $param);
     }
+    # POST /csrf/unmeasured/edit
+    public function postCsrfEdit(Request $request) {
+        $new_name = $request->get('new_name');
+        $new_email = $request->get('new_email');
+        $user_id = $request->session()->get('id');
+        $update_column = ['name' => $new_name, 'email' => $new_email];
+        Csrfuser::where('id', $user_id)->update($update_column);
+        $msg = '更新しました。';
+        $obj = Csrfuser::select('name', 'email')->where('id', $user_id)->get();
+        foreach ($obj as $data) {
+            $name = $data->name;
+            $email = $data->email;
+        }
+        $param = ['name' => $name, 'email' => $email, 'msg' => $msg];
+        return view('csrf_user_page', $param);
+    }
     # GET /csrf/unmeasured/fake
     public function getCsrfFake() {
         return view('csrf_fake');
+    }
+
+    # POST /csrf/remedied/login
+    public function postCsrfRemLogin(Request $request) {
+        $name = $request->get('name');
+        $passwd = $request->get('password');
+        $obj = Csrfuser::select('email', 'password')->where('name', $name)->get();
+        foreach ($obj as $data) {
+            $email = $data->email;
+            $hash_pass = $data->password;
+        }
+        if (Hash::check($passwd, $hash_pass)) {
+            $request->session()->put('remedied', '2');
+            $param = ['name' => $name, 'email' => $email];
+            return view('csrf_rem_user_page', $param);
+        } else {
+            return view('csrf_login');
+        }
+    }
+    # GET /csrf/remedied/edit
+    public function getCsrfRemEdit(Request $request) {
+        $user_id = $request->session()->get('remedied');
+        $obj = Csrfuser::select('name', 'email')->where('id', $user_id)->get();
+        foreach ($obj as $data) {
+            $name = $data->name;
+            $email = $data->email;
+        }
+        $param = ['name' => $name, 'email' => $email];
+        return view('csrf_rem_edit', $param);
+    }
+    # POST /csrf/remedied/edit
+    public function postCsrfRemEdit(Request $request) {
+        $user_id = $request->session()->get('remedied');
+        $new_name = $request->get('new_name');
+        $new_email = $request->get('new_email');
+        $update_column = ['name' => $new_name, 'email' => $new_email];
+        Csrfuser::where('id', $user_id)->update($update_column);
+        $msg = '更新しました。';
+        $obj = Csrfuser::select('name', 'email')->where('id', $user_id)->get();
+        foreach ($obj as $data) {
+            $name = $data->name;
+            $email = $data->email;
+        }
+        $param = ['name' => $name, 'email' => $email, 'msg' => $msg];
+        return view('csrf_rem_user_page', $param);
+    }
+    # GET /csrf/remedied/fake
+    public function getCsrfRemFake() {
+        return view('csrf_rem_fake');
     }
 }

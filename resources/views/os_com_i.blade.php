@@ -14,7 +14,7 @@
         <li>不正なプログラムのダウンロード、実行</li>
         <li>他のシステムへの攻撃の踏み台</li>
     </ul>
-    <p>OSインジェクション例: ping 8.8.8.8</p>
+    <p>OSインジェクション例: powershell -Command "ping 8.8.8.8"</p>
     <h2>悪い例</h2>
     <form action="{{ route('post_os_com_i') }}" method="post">
         @csrf
