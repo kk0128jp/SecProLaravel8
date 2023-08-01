@@ -104,13 +104,13 @@ class HomeController extends Controller
 
     # GET /xss
     public function getXss() {
-        $example = "<a href='javascript:hoge();'><script>function hoge(){location.href = 'http://google.com'}</script>アクセスしてね</a>";
+        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
         return view('xss', ['example' => $example]);
     }
     # POST /xss
     public function postXss(Request $request) {
         $mode = $request->get('measures');
-        $example = "<a href='javascript:hoge();'><script>function hoge(){location.href = 'http://google.com'}</script>アクセスしてね</a>";
+        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
         $result = $request->get('text');
         if ($mode === 'unmeasured') {
             $param = ['example' => $example, 'result_unm' => $result];
