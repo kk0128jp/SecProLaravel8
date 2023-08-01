@@ -179,18 +179,22 @@ class HomeController extends Controller
 
     # POST /csrf/remedied/login
     public function postCsrfRemLogin(Request $request) {
-        $name = $request->get('name');
-        $passwd = $request->get('password');
-        $obj = Csrfuser::select('email', 'password')->where('name', $name)->get();
-        foreach ($obj as $data) {
-            $email = $data->email;
-            $hash_pass = $data->password;
-        }
-        if (Hash::check($passwd, $hash_pass)) {
-            $request->session()->put('remedied', '2');
-            $param = ['name' => $name, 'email' => $email];
-            return view('csrf_rem_user_page', $param);
-        } else {
+        try {
+            $name = $request->get('name');
+            $passwd = $request->get('password');
+            $obj = Csrfuser::select('email', 'password')->where('name', $name)->get();
+            foreach ($obj as $data) {
+                $email = $data->email;
+                $hash_pass = $data->password;
+            }
+            if (Hash::check($passwd, $hash_pass)) {
+                $request->session()->put('remedied', '2');
+                $param = ['name' => $name, 'email' => $email];
+                return view('csrf_rem_user_page', $param);
+            } else {
+                return view('csrf_login');
+            }
+        } catch (\Exception $e) {
             return view('csrf_login');
         }
     }
@@ -211,8 +215,17 @@ class HomeController extends Controller
         $new_name = $request->get('new_name');
         $new_email = $request->get('new_email');
         $update_column = ['name' => $new_name, 'email' => $new_email];
-        Csrfuser::where('id', $user_id)->update($update_column);
-        $msg = '更新しました。';
+        $passwd = $request->get('password');
+        $obj = Csrfuser::select('password')->where('id', $user_id)->get();
+        foreach ($obj as $data) {
+            $hash_pass = $data->password;
+        }
+        if(Hash::check($passwd, $hash_pass)) {
+            Csrfuser::where('id', $user_id)->update($update_column);
+            $msg = '更新しました。';
+        } else {
+            return view('csrf_rem_edit');
+        }
         $obj = Csrfuser::select('name', 'email')->where('id', $user_id)->get();
         foreach ($obj as $data) {
             $name = $data->name;
