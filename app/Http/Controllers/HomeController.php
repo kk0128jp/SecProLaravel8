@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Remedied;
 use App\Models\Csrfuser;
+use App\Models\Xssboard;
 
 class HomeController extends Controller
 {
@@ -104,20 +105,33 @@ class HomeController extends Controller
 
     # GET /xss
     public function getXss() {
+        return view('xss');
+    }
+    # GET /xss/unmeasured
+    public function getUnmXss() {
         $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
-        return view('xss', ['example' => $example]);
+        $obj = Xssboard::select('comment')->get();
+        $param = ['example' => $example, 'obj' => $obj];
+        return view('xss_unm', $param);
+    }
+    # GET /xss/remedied
+    public function getRemXss() {
+        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
+        $obj = Xssboard::select('comment')->get();
+        $param = ['example' => $example, 'obj' => $obj];
+        return view('xss_rem', $param);
     }
     # POST /xss
     public function postXss(Request $request) {
-        $mode = $request->get('measures');
-        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
-        $result = $request->get('text');
-        if ($mode === 'unmeasured') {
-            $param = ['example' => $example, 'result_unm' => $result];
-            return view('xss', $param);
-        } elseif ($mode === 'remedied') {
-            $param = ['example' => $example, 'result_rem' => $result];
-            return view('xss', $param);
+        $comment = $request->get('text');
+        $mode = $request->get('mode');
+        $model = new Xssboard;
+        $model->comment = $comment;
+        $model->save();
+        if ($mode === 'unm') {
+            return redirect(route('get_unm_xss'));
+        } elseif ($mode === 'rem') {
+            return redirect(route('get_rem_xss'));
         }
     }
 

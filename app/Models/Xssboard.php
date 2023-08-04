@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Xssboard extends Model
 {
     use HasFactory;
+    protected $table = 'xssboard';
+
+    protected $fillable = ['comment'];
 }

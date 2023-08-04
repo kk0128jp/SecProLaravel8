@@ -37,8 +37,13 @@ Route::post('/path-i', [HomeController::class, 'postPathI'])->name('post_path_i'
 
 # GET /xss
 Route::get('/xss', [HomeController::class, 'getXss'])->name('get_xss');
-# POST /xss
-Route::post('/xss', [HomeController::class, 'postXss'])->name('post_xss');
+# GET /xss/unmeasured
+Route::get('/xss/unmeasured', [HomeController::class, 'getUnmXss'])->name('get_unm_xss');
+# POST /xss/unmeasured
+Route::post('/xss/unmeasured', [HomeController::class, 'postXss'])->name('post_xss');
+# GET /xss/remedied
+Route::get('/xss/remedied', [HomeController::class, 'getRemXss'])->name('get_rem_xss');
+# POST /xss/remedied
 
 # GET /csrf/unmeasured/login
 Route::get('/csrf/unmeasured/login', [HomeController::class, 'getCsrfLogin'])->name('get_csrf_login');

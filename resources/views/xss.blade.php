@@ -12,31 +12,12 @@
         <li>ウェブページの改ざん</li>
         <li>Cookieの漏洩</li>
     </ul>
-    <p>クロスサイト・スクリプティング例: {{ $example }}</p>
     <h2>悪い例</h2>
-    <p>テキストを投稿してね</p>
-    <form action="{{ route('post_xss') }}" method="post">
-        @csrf
-        <input type="text" name="text">
-        <input type="hidden" name="measures" value="unmeasured">
-        <input type="submit" value="投稿">
-    </form>
-    <p>投稿文</p>
-    @isset ( $result_unm )
-        {!! $result_unm !!}
-    @endisset
+    <a href="{{ route('get_unm_xss') }}">脆弱</a>
+    
     <h2>良い例</h2>
-    <p>テキストを投稿してね</p>
-    <form action="{{ route('post_xss') }}" method="post">
-        @csrf
-        <input type="text" name="text">
-        <input type="hidden" name="measures" value="remedied">
-        <input type="submit" value="投稿">
-    </form>
-    <p>投稿文</p>
-    @isset ( $result_rem )
-        {{ $result_rem }}
-    @endisset
+    <a href="{{ route('get_rem_xss') }}">良い例</a>
+    
     <p><a href="{{ route('home') }}">ホームへ</a></p>
 </body>
 </html>
