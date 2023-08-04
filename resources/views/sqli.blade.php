@@ -1,20 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>SQLインジェクション 危険度:<span style="color: red;">高</span></h1>
-    <p>被害想定</p>
-    <ul>
-        <li>情報漏洩、改ざん、妨害</li>
-    </ul>
+@extends('layouts.template')
+
+@section('title')
+    SQLインジェクション
+@endsection('title')
+
+@section('level')
+    高
+@endsection
+
+@section('damage-list')
+    <li>情報漏洩、改ざん、妨害</li>
+@endsection
+
+@section('example')
+    ' or 1 = 1 or ';
+@endsection
+
+@section('info')
     <p>ユーザー名: badtaro　パスワード: taro</p>
     <p>ユーザー名: goodhanako　パスワード: hanako</p>
-    <p>SQLインジェクション例: ' or 1 = 1 or ';</p>
-    <h2>悪い例</h2>
+@endsection
+
+@section('bad-cont')
     <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
@@ -30,7 +37,9 @@
             {{ $result }}
         @endif
     @endisset
-    <h2>良い例</h2>
+@endsection
+
+@section('good-cont')
     <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
@@ -46,6 +55,8 @@
             {{ $result }}
         @endif
     @endisset
+@endsection
+
+@section('link')
     <p><a href="{{ route('home') }}">ホームへ</a></p>
-</body>
-</html>
+@endsection
