@@ -11,17 +11,10 @@
     </header>
     
     <div class="container">
-        <p>被害想定</p>
-        <ul>
-            @yield('damage-list')
-        </ul>
         <p>@yield('title')例: @yield('example')</p>
         
-        <h2>脆弱例</h2>
-        @yield('bad-cont')
-        
-        <h2>対策例</h2>
-        @yield('good-cont')
+        <h2>@yield('cont-example')</h2>
+        @yield('cont')
 
         @yield('link')
     </div>

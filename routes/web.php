@@ -43,7 +43,8 @@ Route::get('/xss/unmeasured', [HomeController::class, 'getUnmXss'])->name('get_u
 Route::post('/xss/unmeasured', [HomeController::class, 'postXss'])->name('post_xss');
 # GET /xss/remedied
 Route::get('/xss/remedied', [HomeController::class, 'getRemXss'])->name('get_rem_xss');
-# POST /xss/remedied
+# GET /xss/fake
+Route::get('/xss/fake', [HomeController::class, 'getXssFake'])->name('get_xss_fake');
 
 # GET /csrf/unmeasured/login
 Route::get('/csrf/unmeasured/login', [HomeController::class, 'getCsrfLogin'])->name('get_csrf_login');

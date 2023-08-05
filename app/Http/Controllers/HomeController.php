@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Remedied;
 use App\Models\Csrfuser;
 use App\Models\Xssboard;
@@ -109,14 +110,14 @@ class HomeController extends Controller
     }
     # GET /xss/unmeasured
     public function getUnmXss() {
-        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
+        $example = "<script>location.href = '127.0.0.1:8000/xss/fake';</script>";
         $obj = Xssboard::select('comment')->get();
         $param = ['example' => $example, 'obj' => $obj];
         return view('xss_unm', $param);
     }
     # GET /xss/remedied
     public function getRemXss() {
-        $example = "<script>location.href = 'https://www.oca.ac.jp/';</script>";
+        $example = "<script>location.href = '127.0.0.1:8000/xss/fake';</script>";
         $obj = Xssboard::select('comment')->get();
         $param = ['example' => $example, 'obj' => $obj];
         return view('xss_rem', $param);
@@ -133,6 +134,15 @@ class HomeController extends Controller
         } elseif ($mode === 'rem') {
             return redirect(route('get_rem_xss'));
         }
+    }
+    # GET /xss/fake
+    public function getXssFake() {
+        $file_path = 'public/malware.exe';
+        $file_name = 'malware.exe';
+
+        $mimeType = Storage::mimeType($file_path);
+        $headers = [['Content-Type' => $mimeType]];
+        return Storage::download($file_path, $file_name, $headers);
     }
 
     # GET /csrf/unmeasured/login

@@ -5,7 +5,7 @@
 @endsection('title')
 
 @section('level')
-    高
+    <span style="color: red;">高</span>
 @endsection
 
 @section('damage-list')
@@ -16,12 +16,8 @@
     ' or 1 = 1 or ';
 @endsection
 
-@section('info')
-    <p>ユーザー名: badtaro　パスワード: taro</p>
-    <p>ユーザー名: goodhanako　パスワード: hanako</p>
-@endsection
-
 @section('bad-cont')
+    <p>ユーザー名: badtaro　パスワード: taro</p>
     <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
@@ -40,6 +36,7 @@
 @endsection
 
 @section('good-cont')
+    <p>ユーザー名: goodhanako　パスワード: hanako</p>
     <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
