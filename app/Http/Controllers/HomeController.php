@@ -254,7 +254,7 @@ class HomeController extends Controller
             $name = $data->name;
             $email = $data->email;
         }
-        $param = ['name' => $name, 'email' => $email, 'msg' => $msg];
+        $param = ['name' => $name, 'email' => $email];#, 'msg' => $msg];
         return view('csrf_rem_user_page', $param);
     }
     # GET /csrf/remedied/fake
