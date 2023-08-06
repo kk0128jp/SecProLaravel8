@@ -1,12 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>クロスサイト・スクリプティング例: {{ $example }}</p>
+@extends('layouts.xss_template')
+
+@section('title')
+    クロスサイト・スクリプティング(XSS)
+@endsection
+
+@section('example')
+    {{ $example }}
+@endsection
+
+@section('cont-example')
+    対策例
+@endsection
+
+@section('cont')
     <p>テキストを投稿してね</p>
     <form action="{{ route('post_xss') }}" method="post">
         @csrf
@@ -16,10 +22,14 @@
     </form>
     <p>投稿文</p>
     @isset ( $obj )
-        @foreach ($obj as $data)
-            {{ $data->comment }}
-        @endforeach
+        <ul>
+            @foreach ($obj as $data)
+                <li>{{ $data->comment }}</li>
+            @endforeach
+        </ul>
     @endisset
+@endsection
+
+@section('link')
     <a href="{{ route('get_xss') }}">XSS TOPページへ</a>
-</body>
-</html>
+@endsection

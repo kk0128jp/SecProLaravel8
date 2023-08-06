@@ -6,9 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Redirect;
 use App\Models\Remedied;
 use App\Models\Csrfuser;
 use App\Models\Xssboard;
+use My_func;
 
 class HomeController extends Controller
 {
@@ -110,14 +113,14 @@ class HomeController extends Controller
     }
     # GET /xss/unmeasured
     public function getUnmXss() {
-        $example = "<script>location.href = '127.0.0.1:8000/xss/fake';</script>";
+        $example = "<script>location.href = 'http://127.0.0.1:8000/xss/fake';</script>";
         $obj = Xssboard::select('comment')->get();
         $param = ['example' => $example, 'obj' => $obj];
         return view('xss_unm', $param);
     }
     # GET /xss/remedied
     public function getRemXss() {
-        $example = "<script>location.href = '127.0.0.1:8000/xss/fake';</script>";
+        $example = "<script>location.href = 'http://127.0.0.1:8000/xss/fake';</script>";
         $obj = Xssboard::select('comment')->get();
         $param = ['example' => $example, 'obj' => $obj];
         return view('xss_rem', $param);
@@ -137,12 +140,8 @@ class HomeController extends Controller
     }
     # GET /xss/fake
     public function getXssFake() {
-        $file_path = 'public/malware.exe';
-        $file_name = 'malware.exe';
-
-        $mimeType = Storage::mimeType($file_path);
-        $headers = [['Content-Type' => $mimeType]];
-        return Storage::download($file_path, $file_name, $headers);
+        return My_func::Donwload();
+        #return view('xss_fake');
     }
 
     # GET /csrf/unmeasured/login
@@ -166,7 +165,7 @@ class HomeController extends Controller
                 return view('csrf_user_page', $param);
             }
         } else {
-            return view('csrf_login');
+            return view('csrf_login', ['msg' => 'ログインに失敗しました']);
         }
     }
     # GET /csrf/unmeasured/edit

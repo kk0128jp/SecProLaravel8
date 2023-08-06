@@ -210,6 +210,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'My_func' => App\Lib\My_func::class,
     ])->toArray(),
 
 ];
