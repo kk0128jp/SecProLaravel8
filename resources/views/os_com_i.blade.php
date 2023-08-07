@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('head-link')
+    <link rel="stylesheet" href="{{ asset('/css/os_com_i.css') }}">
+@endsection
+
 @section('title')
     OSコマンドインジェクション
 @endsection
@@ -9,10 +13,10 @@
 @endsection
 
 @section('damage-list')
-    <li>サーバ内ファイルの閲覧、改ざん、削除</li>
-    <li>不正なシステム操作</li>
-    <li>不正なプログラムのダウンロード、実行</li>
-    <li>他のシステムへの攻撃の踏み台</li>
+    <li class="damage-list">サーバ内ファイルの閲覧、改ざん、削除</li>
+    <li class="damage-list">不正なシステム操作</li>
+    <li class="damage-list">不正なプログラムのダウンロード、実行</li>
+    <li class="damage-list">他のシステムへの攻撃の踏み台</li>
 @endsection
 
 @section('example')
@@ -22,23 +26,22 @@
 @section('bad-cont')
     <form action="{{ route('post_os_com_i') }}" method="post">
         @csrf
-        <p>OSコマンドを入力してね</p>
+        <p class="ft">OSコマンドを入力してね</p>
         <input type="text" name="command">
-        <input type="submit" value="実行">
+        <button class="submit-button" type="submit">実行</button>
     </form>
     @isset( $command )
-        <p>コマンド</p>
-        <p>{{ $command }}</p>
-        <p>結果</p>
+        <p class="command-text fw-bold">コマンド</p>
+        <p class="command">{{ $command }}</p>
+        <p class="fw-bold">結果</p>
         <pre>{{ $result }}</pre>
     @endisset
 @endsection
 
 @section('good-cont')
-    <h2>良い例</h2>
     <ul>
-        <li>シェルを起動できる言語機能の利用を避ける。</li>
-        <li>外部からコマンドの引数を受け取らない</li>
+        <li class="good-list">シェルを起動できる言語機能の利用を避ける。</li>
+        <li class="good-list">外部からコマンドの引数を受け取らない</li>
     </ul>
 @endsection
 

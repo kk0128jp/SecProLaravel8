@@ -1,0 +1,30 @@
+.example {
+    border: solid 1px #F7A4A4;
+    background-color: #ffecda;
+    margin: 0 10%;
+}
+
+.damage-list {
+    color: red;
+    margin-top: 10px;
+}
+
+.submit-button {
+    margin-top: 20px;
+    background-color: #FEBE8C;
+    border: 1px solid #F7A4A4;
+    border-radius: 10px;
+    width: 10%;
+}
+
+.ft {
+    margin-top: 10px;
+}
+
+.good-list {
+    margin-top: 10px;
+}
+
+.command-text {
+    margin-top: 10px;
+}
