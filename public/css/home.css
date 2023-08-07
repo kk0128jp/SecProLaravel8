@@ -10,3 +10,11 @@ li {
 h1 {
     margin-top: 0;
 }
+
+a {
+    color: #FD8D14;
+}
+
+a:hover {
+    color: #FEBE8C;
+}

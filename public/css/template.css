@@ -6,3 +6,25 @@
 li {
     list-style: none;
 }
+
+.title {
+    margin-top: 20px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+a {
+    color: #FD8D14;
+}
+
+a:hover {
+    color: #FEBE8C;
+}
+
+.example {
+    border: solid 1px #F7A4A4;
+    background-color: #ffecda;
+    margin: 0 20%;
+}

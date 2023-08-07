@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('head-link')
+    <link rel="stylesheet" href="{{ asset('/css/sql.css') }}">
+@endsection
+
 @section('title')
     SQLインジェクション
 @endsection('title')
@@ -9,7 +13,7 @@
 @endsection
 
 @section('damage-list')
-    <li>情報漏洩、改ざん、妨害</li>
+    <li class="damage-list">情報漏洩、改ざん、妨害</li>
 @endsection
 
 @section('example')
@@ -17,7 +21,7 @@
 @endsection
 
 @section('bad-cont')
-    <p>ユーザー名: badtaro　パスワード: taro</p>
+    <p class="user-info">ユーザー名: badtaro　パスワード: taro</p>
     <p>ログインしてください</p>
     <form action="{{ route('post_sqli') }}" method="post">
         @csrf
@@ -25,12 +29,12 @@
         <input type="text" name="name">
         <p>パスワード</p>
         <input type="password" name="passwd">
-        <input type="hidden" value="unmeasured" name="measures">
-        <input type="submit" value="ログイン">
+        <input type="hidden" value="unmeasured" name="measures"><br>
+        <button class="submit-button" type="submit">ログイン</button>
     </form>
     @isset ( $measures )
         @if ( $measures === 'unmeasured' )
-            {{ $result }}
+            <p class="result">{{ $result }}</p>
         @endif
     @endisset
 @endsection
@@ -44,12 +48,12 @@
         <input type="text" name="name">
         <p>パスワード</p>
         <input type="password" name="passwd">
-        <input type="hidden" value="remedied" name="measures">
-        <input type="submit" value="ログイン">
+        <input type="hidden" value="remedied" name="measures"><br>
+        <button class="submit-button" type="submit">ログイン</button>
     </form>
     @isset ( $measures )
         @if ( $measures === 'remedied' )
-            {{ $result }}
+            <p class="result">{{ $result }}</p>
         @endif
     @endisset
 @endsection

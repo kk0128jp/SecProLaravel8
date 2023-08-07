@@ -1,0 +1,19 @@
+.submit-button {
+    margin-top: 20px;
+    background-color: #FEBE8C;
+    border: 1px solid #F7A4A4;
+    border-radius: 10px;
+    width: 25%;
+}
+
+.result {
+    margin-top: 10px;
+}
+
+.damage-list {
+    color: red;
+}
+
+.user-info {
+    margin-top: 10px;
+}
