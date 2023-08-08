@@ -15,7 +15,7 @@
         </header>
         <p  class="example">@yield('title')例: <sapn class="example-span">@yield('example')</span></p>
         
-        <h2 >@yield('cont-example')</h2>
+        <h2 class="cont-example">@yield('cont-example')</h2>
         @yield('cont')
 
         @yield('link')

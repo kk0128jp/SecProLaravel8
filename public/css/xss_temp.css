@@ -29,6 +29,10 @@ a:hover {
     margin: 0 20%;
 }
 
+.cont-example {
+    font: bold;
+}
+
 .example-span {
     font-size: large;
     font: bold;

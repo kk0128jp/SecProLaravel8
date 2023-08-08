@@ -1,0 +1,14 @@
+.submit-button {
+    background-color: #FEBE8C;
+    border: 1px solid #F7A4A4;
+    border-radius: 10px;
+    width: 5%;
+}
+
+.post-list {
+    margin-top: 10px;
+}
+
+.post-title {
+    font: bold;
+}
