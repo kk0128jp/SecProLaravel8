@@ -1,7 +1,15 @@
 @extends('layouts.xss_template')
 
+@section('head-link')
+    <link rel="stylesheet" href="{{ asset('/css/xss_temp.css') }}">
+@endsection
+
 @section('title')
     クロスサイト・スクリプティング(XSS)
+@endsection
+
+@section('level')
+    <span style="color: yellow;">中</span>
 @endsection
 
 @section('example')
