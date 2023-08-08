@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('head-link')
+    <link rel="stylesheet" href="{{ asset('/css/csrf_login.css') }}">
+@endsection
+
 @section('title')
     CSRF(クロスサイト・リクエスト・フォージェリ)
 @endsection
@@ -9,8 +13,8 @@
 @endsection
 
 @section('damage-list')
-    <li>ログイン後の利用者のみが利用可能なサービスの悪用</li>
-    <li>ログイン後の利用者のみが編集可能な情報の改ざん、新規登録</li>
+    <li class="damage-list">ログイン後の利用者のみが利用可能なサービスの悪用</li>
+    <li class="damage-list">ログイン後の利用者のみが編集可能な情報の改ざん、新規登録</li>
 @endsection
 
 @section('example')
@@ -24,8 +28,8 @@
         <input type="text" name="name">
         <p>パスワード: taro</p>
         <input type="hidden" name="measures" value="unmeasured">
-        <input type="password" name="password">
-        <input type="submit" value="ログイン">
+        <input type="password" name="password"><br>
+        <button class="submit-button" type="submit">ログイン</button>
     </form>
     @isset( $msg )
         {{ $msg }}
@@ -40,11 +44,11 @@
         <input type="text" name="name">
         <p>パスワード: hanako</p>
         <input type="password" name="password">
-        <input type="hidden" name="measures" value="remedied">
-        <input type="submit" name="ログイン">
+        <input type="hidden" name="measures" value="remedied"><br>
+        <button class="submit-button" type="submit">ログイン</button>
     </form>
 @endsection
 
 @section('link')
-    <p><a href="{{ route('home') }}">ホームへ</a></p>
+    <p class="link"><a href="{{ route('home') }}">ホームへ</a></p>
 @endsection
