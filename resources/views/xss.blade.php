@@ -1,5 +1,9 @@
 @extends('layouts.template')
 
+@section('head-link')
+    <link rel="stylesheet" href="{{ asset('/css/xss.css') }}">
+@endsection
+
 @section('title')
     クロスサイト・スクリプティング(XSS)
 @endsection
@@ -9,18 +13,18 @@
 @endsection
 
 @section('damage-list')
-    <li>ウェブページの改ざん</li>        
-    <li>Cookieの漏洩</li>
+    <li class="damage-list">ウェブページの改ざん</li>        
+    <li class="damage-list">Cookieの漏洩</li>
 @endsection
 
 @section('bad-cont')
-    <a href="{{ route('get_unm_xss') }}">脆弱</a>
+    <p class="link"><a href="{{ route('get_unm_xss') }}">脆弱例</a></p>
 @endsection
     
 @section('good-cont')
-    <a href="{{ route('get_rem_xss') }}">良い例</a>
+    <p class="link"><a href="{{ route('get_rem_xss') }}">対策例</a></p>
 @endsection    
     
 @section('link')
-    <p><a href="{{ route('home') }}">ホームへ</a></p>
+    <p class="link"><a href="{{ route('home') }}">ホームへ</a></p>
 @endsection

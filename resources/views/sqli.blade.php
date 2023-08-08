@@ -59,5 +59,5 @@
 @endsection
 
 @section('link')
-    <p><a href="{{ route('home') }}">ホームへ</a></p>
+    <p class="link"><a href="{{ route('home') }}">ホームへ</a></p>
 @endsection

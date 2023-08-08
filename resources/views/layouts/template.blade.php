@@ -20,7 +20,7 @@
         </ul>
         
         <h2 class="fw-bold">脆弱例</h2>
-        <p class="example">@yield('title')例: <sapn style="color: #E7B10A;">@yield('example')</span></p>
+        <p class="example">@yield('title')例: <sapn class="example-span">@yield('example')</span></p>
         @yield('bad-cont')
         
         <h2 class="fw-bold">対策例</h2>
