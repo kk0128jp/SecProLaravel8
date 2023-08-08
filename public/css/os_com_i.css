@@ -7,6 +7,7 @@
 .damage-list {
     color: red;
     margin-top: 10px;
+    font-size: larger;
 }
 
 .submit-button {
@@ -23,6 +24,7 @@
 
 .good-list {
     margin-top: 10px;
+    font-size: larger;
 }
 
 .command-text {

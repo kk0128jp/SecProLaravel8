@@ -28,3 +28,9 @@ a:hover {
     background-color: #ffecda;
     margin: 0 20%;
 }
+
+.example-span {
+    font-size: large;
+    font: bold;
+    color: #E7B10A;
+}
