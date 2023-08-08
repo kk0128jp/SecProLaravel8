@@ -1,0 +1,26 @@
+.damage-list {
+    color: red;
+}
+
+.cont-txt {
+    margin-top: 10px;
+}
+
+.button {
+    background-color: #FEBE8C;
+    border: 1px solid #F7A4A4;
+    border-radius: 10px;
+    width: 10%;
+}
+
+.link {
+    margin-top: 10px;
+}
+
+.e-msg {
+    margin-top: 10px;
+}
+
+.good-list {
+    margin-top: 10px;
+}
