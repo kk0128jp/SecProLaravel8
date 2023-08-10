@@ -6,10 +6,12 @@
     {{ $name }}
     <p>メールアドレス</p>
     {{ $email }}
-    <button><a href="{{ route('get_csrf_edit') }}">編集</a></button>
-    <button><a href="{{ route('get_csrf_fake') }}">罠サイト</a></button>
+    <br>
+    <button class="submit-button"><a href="{{ route('get_csrf_edit') }}">編集</a></button>
+    <button class="submit-button"><a href="{{ route('get_csrf_fake') }}">罠サイト</a></button>
     @isset( $msg )
         {{ $msg }}
     @endisset
+    <br>
     <a href="{{ route('get_csrf_login') }}">ログインページへ</a>
 @endsection
