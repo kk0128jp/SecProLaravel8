@@ -13,8 +13,9 @@
     <br>
     <button class="submit-button"><a href="{{ route('get_csrf_edit') }}">編集</a></button>
     <button class="submit-button"><a href="{{ route('get_csrf_fake') }}">罠サイト</a></button>
+    <br>
     @isset( $msg )
-        {{ $msg }}
+        <p>{{ $msg }}</p>
     @endisset
     <br>
     <a class="to-login-link" href="{{ route('get_csrf_login') }}">ログインページへ</a>
