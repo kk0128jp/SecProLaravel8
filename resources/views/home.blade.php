@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container text-center">
-        <h1 class="fw-bold mt-0">webアプリケーションの脆弱性</h1>
+        <h1 class="fw-bold mt-0">安全なウェブサイトの作り方 ~ Laravel9 ~</h1>
         <h2>取り上げる脆弱性</h2>
         <ul>
             <li><a href="{{ route('sqli') }}">SQLインジェクション</a></li>
