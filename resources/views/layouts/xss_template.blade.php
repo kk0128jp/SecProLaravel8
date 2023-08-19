@@ -20,7 +20,7 @@
 
         @yield('link')
         <footer>
-            <p>&copy; 2023 kawagisi</p>
+            <p>&copy; 2023 kk0128jp</p>
         </footer>
     </div>
 </body>
