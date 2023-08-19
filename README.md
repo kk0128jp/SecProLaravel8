@@ -2,7 +2,10 @@
 
 ## 概要
 
-IPAの資料「[安全なウェブサイトの作り方　改訂第7版](https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017316.pdf)」を元にWebアプリケーションの脆弱性とLaravelでの対策例を実装しました。
+「[IPA 安全なウェブサイトの作り方　改訂第7版](https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017316.pdf)」を元にWebアプリケーションの脆弱性をいくつか取り上げた。
+
+その脆弱性に対してLaravelでの対策例を実装した。
+
 ※対策の実装はあくまで一例です。
 
 ## 脆弱性一覧
