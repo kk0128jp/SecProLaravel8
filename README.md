@@ -17,4 +17,4 @@ IPAの資料「[安全なウェブサイトの作り方　改訂第7版](https:/
 
 ## 制作者
 
-[Twitter @kk0128_](https://twitter.com/kk0128_)
+<!--[Twitter @kk0128_](https://twitter.com/kk0128_)-->
