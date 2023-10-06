@@ -24,7 +24,7 @@
             <li><a href="https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017319.pdf" target="_blank">ウェブ健康診断仕様</a></li>
             <li><a href="https://www.ipa.go.jp/security/vuln/websecurity/ug65p900000196e2-att/000017320.pdf" target="_blank">安全なSQLの呼び出し方</a></li>
         </ul>
-        <footer>&copy; 2023 kawagisi</footer>
+        <footer>&copy; 2023 kk0128jp</footer>
     </div>
 </body>
 </html>

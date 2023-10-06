@@ -11,7 +11,7 @@
     <div class="container text-center">
         <h1 class="title">CSRF(クロスサイト・リクエスト・フォージェリ)</h1>
         @yield('cont')
-        <footer>&copy; 2023 kawagisi</footer>
+        <footer>&copy; 2023 kk0128jp</footer>
     </div>
 </body>
 </html>
